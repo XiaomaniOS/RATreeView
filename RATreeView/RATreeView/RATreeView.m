@@ -233,6 +233,14 @@
 
 #pragma mark Expanding and Collapsing Rows
 
+- (void)expandRowForIndexPath:(NSIndexPath *)indexPath {
+    RATreeNode *treeNode = [self treeNodeForIndexPath:indexPath];
+    if (!treeNode || treeNode.expanded) {
+        return;
+    }
+    [self expandCellForTreeNode:treeNode expandChildren:NO withRowAnimation:self.rowsExpandingAnimation];
+}
+
 - (void)expandRowForItem:(id)item
 {
   [self expandRowForItem:item withRowAnimation:self.rowsExpandingAnimation];
